@@ -7,22 +7,6 @@
 -- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
 
--- 确保终端背景透明，解决切换时的黑色闪烁问题
-vim.api.nvim_create_autocmd({ "TermOpen", "BufEnter" }, {
-  pattern = "term://*",
-  callback = function()
-    -- 设置终端窗口透明
-    vim.cmd([[
-      setlocal winblend=0
-      highlight Normal guibg=NONE ctermbg=NONE
-      highlight NormalFloat guibg=NONE ctermbg=NONE
-      highlight Terminal guibg=NONE ctermbg=NONE
-      highlight TerminalNormal guibg=NONE ctermbg=NONE
-      highlight TerminalNC guibg=NONE ctermbg=NONE
-    ]])
-  end,
-})
-
 -- 确保所有浮动窗口保持透明背景但有彩色边框
 vim.api.nvim_create_autocmd("WinNew", {
   callback = function()

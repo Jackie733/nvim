@@ -14,16 +14,16 @@ return {
         { "╰", "FloatBorder" },
         { "│", "FloatBorder" },
       }
-      
+
       -- 应用边框到 LSP 处理器
       local handlers = {
         ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
         ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
       }
-      
+
       -- 合并到现有配置
       opts.handlers = vim.tbl_deep_extend("force", opts.handlers or {}, handlers)
-      
+
       return opts
     end,
   },
@@ -39,10 +39,10 @@ return {
         icons = {
           package_installed = "✓",
           package_pending = "➜",
-          package_uninstalled = "✗"
-        }
-      }
-    }
+          package_uninstalled = "✗",
+        },
+      },
+    },
   },
 
   -- 配置 Telescope 边框
@@ -87,7 +87,6 @@ return {
       },
     },
   },
-
 
   -- 配置 Trouble 边框
   {
