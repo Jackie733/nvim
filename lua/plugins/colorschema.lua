@@ -39,7 +39,7 @@ return {
         hl.FloatBorder = {
           bg = "NONE",
           fg = c.blue, -- 使用蓝色边框
-          bold = true
+          bold = true,
         }
         hl.NormalFloat = { bg = "NONE" }
 
@@ -47,7 +47,7 @@ return {
         hl.LspInfoBorder = {
           bg = "NONE",
           fg = c.cyan, -- 青色边框
-          bold = true
+          bold = true,
         }
 
         -- 诊断浮动窗口边框
@@ -62,7 +62,7 @@ return {
         hl.CmpBorder = {
           bg = "NONE",
           fg = c.purple, -- 紫色边框
-          bold = true
+          bold = true,
         }
 
         -- Mason 窗口边框
@@ -70,14 +70,14 @@ return {
         hl.MasonBorder = {
           bg = "NONE",
           fg = c.green, -- 绿色边框
-          bold = true
+          bold = true,
         }
 
         -- Telescope 边框
         hl.TelescopeBorder = {
           bg = "NONE",
           fg = c.orange, -- 橙色边框
-          bold = true
+          bold = true,
         }
         hl.TelescopeNormal = { bg = "NONE" }
 
@@ -85,6 +85,11 @@ return {
         hl.Terminal = { bg = "NONE" }
         hl.TerminalNormal = { bg = "NONE" }
         hl.TerminalNC = { bg = "NONE" }
+
+        -- Tab
+        hl.TabLine = { bg = "NONE", fg = c.comment }
+        hl.TabLineSel = { bg = "NONE", fg = c.blue }
+        hl.TabLineFill = { bg = "NONE" }
       end,
     },
   },
