@@ -17,8 +17,8 @@ return {
       shell = vim.o.shell,
       float_opts = {
         border = "curved", -- 边框样式：single/double/shadow/curved
-        width = 120,
-        height = 30,
+        width = 150,
+        height = 50,
         winblend = 0, -- 设置为 0 以完全透明，或者使用 10-30 的值来调节透明度
         highlights = {
           border = "FloatBorder",
