@@ -2,55 +2,62 @@ return {
   "nvim-lualine/lualine.nvim",
   event = "VeryLazy",
   opts = function()
-    -- 创建透明主题
+    local ui_fg = "#c5c9c5"
+    local ui_fg_dim = "#a9b1d6"
+    local inactive_fg = "#565f89"
+    local palette = {}
+
+    local ok, kanagawa_colors = pcall(require, "kanagawa.colors")
+    if ok then
+      local success, colors = pcall(kanagawa_colors.setup)
+      if success then
+        ui_fg = colors.theme.ui.fg
+        ui_fg_dim = colors.theme.ui.fg_dim
+        inactive_fg = colors.theme.ui.nontext
+        palette = colors.palette
+      end
+    end
+
+    local function section(color, bold)
+      local highlight = { bg = "NONE", fg = color }
+      if bold then
+        highlight.gui = "bold"
+      end
+      return highlight
+    end
+
+    local accent = {
+      normal = palette.dragonBlue2 or "#7aa2f7",
+      insert = palette.dragonGreen or "#9ece6a",
+      visual = palette.dragonViolet or "#bb9af7",
+      replace = palette.dragonRed or "#f7768e",
+      command = palette.dragonYellow or "#e0af68",
+    }
+
+    local function mode_theme(color)
+      return {
+        a = section(color, true),
+        b = section(ui_fg),
+        c = section(ui_fg_dim),
+        x = section(ui_fg_dim),
+        y = section(ui_fg),
+        z = section(color, true),
+      }
+    end
+
     local transparent_theme = {
-      normal = {
-        a = { bg = "NONE", fg = "#7aa2f7", gui = "bold" },
-        b = { bg = "NONE", fg = "#7dcfff" },
-        c = { bg = "NONE", fg = "#a9b1d6" },
-        x = { bg = "NONE", fg = "#a9b1d6" },
-        y = { bg = "NONE", fg = "#7dcfff" },
-        z = { bg = "NONE", fg = "#7aa2f7", gui = "bold" },
-      },
-      insert = {
-        a = { bg = "NONE", fg = "#9ece6a", gui = "bold" },
-        b = { bg = "NONE", fg = "#7dcfff" },
-        c = { bg = "NONE", fg = "#a9b1d6" },
-        x = { bg = "NONE", fg = "#a9b1d6" },
-        y = { bg = "NONE", fg = "#7dcfff" },
-        z = { bg = "NONE", fg = "#9ece6a", gui = "bold" },
-      },
-      visual = {
-        a = { bg = "NONE", fg = "#bb9af7", gui = "bold" },
-        b = { bg = "NONE", fg = "#7dcfff" },
-        c = { bg = "NONE", fg = "#a9b1d6" },
-        x = { bg = "NONE", fg = "#a9b1d6" },
-        y = { bg = "NONE", fg = "#7dcfff" },
-        z = { bg = "NONE", fg = "#bb9af7", gui = "bold" },
-      },
-      replace = {
-        a = { bg = "NONE", fg = "#f7768e", gui = "bold" },
-        b = { bg = "NONE", fg = "#7dcfff" },
-        c = { bg = "NONE", fg = "#a9b1d6" },
-        x = { bg = "NONE", fg = "#a9b1d6" },
-        y = { bg = "NONE", fg = "#7dcfff" },
-        z = { bg = "NONE", fg = "#f7768e", gui = "bold" },
-      },
-      command = {
-        a = { bg = "NONE", fg = "#e0af68", gui = "bold" },
-        b = { bg = "NONE", fg = "#7dcfff" },
-        c = { bg = "NONE", fg = "#a9b1d6" },
-        x = { bg = "NONE", fg = "#a9b1d6" },
-        y = { bg = "NONE", fg = "#7dcfff" },
-        z = { bg = "NONE", fg = "#e0af68", gui = "bold" },
-      },
+      normal = mode_theme(accent.normal),
+      insert = mode_theme(accent.insert),
+      visual = mode_theme(accent.visual),
+      replace = mode_theme(accent.replace),
+      command = mode_theme(accent.command),
       inactive = {
-        a = { bg = "NONE", fg = "#565f89" },
-        b = { bg = "NONE", fg = "#565f89" },
-        c = { bg = "NONE", fg = "#565f89" },
-        x = { bg = "NONE", fg = "#565f89" },
-        y = { bg = "NONE", fg = "#565f89" },
-        z = { bg = "NONE", fg = "#565f89" },
+        a = section(inactive_fg),
+        b = section(inactive_fg),
+        c = section(inactive_fg),
+        x = section(inactive_fg),
+        y = section(inactive_fg),
+        z = section(inactive_fg),
       },
     }
 

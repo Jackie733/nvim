@@ -30,7 +30,7 @@ return {
 
   -- 配置 Mason 边框
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = {
       ui = {
         border = "rounded",
@@ -59,21 +59,23 @@ return {
     },
   },
 
-  -- 配置补全菜单边框 (如果使用 nvim-cmp)
+  -- 配置 Blink.cmp 浮动窗口边框
   {
-    "hrsh7th/nvim-cmp",
+    "saghen/blink.cmp",
     opts = function(_, opts)
-      local cmp = require("cmp")
-      opts.win = {
-        completion = cmp.config.window.bordered({
-          border = "rounded",
-          winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:None",
-        }),
-        documentation = cmp.config.window.bordered({
-          border = "rounded",
-          winhighlight = "Normal:CmpDoc",
-        }),
-      }
+      local completion = opts.completion or {}
+
+      completion.menu = vim.tbl_deep_extend("force", {}, completion.menu or {}, {
+        border = "rounded",
+      })
+
+      local documentation = completion.documentation or {}
+      documentation.window = vim.tbl_deep_extend("force", {}, documentation.window or {}, {
+        border = "rounded",
+      })
+      completion.documentation = documentation
+
+      opts.completion = completion
       return opts
     end,
   },

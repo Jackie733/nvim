@@ -23,26 +23,65 @@ vim.api.nvim_create_autocmd("WinNew", {
 -- 在颜色方案加载后重新应用透明设置和边框颜色
 vim.api.nvim_create_autocmd("ColorScheme", {
   callback = function()
-    vim.cmd([[
-      highlight Normal guibg=NONE ctermbg=NONE
-      highlight NormalFloat guibg=NONE ctermbg=NONE
-      highlight Terminal guibg=NONE ctermbg=NONE
-      highlight TerminalNormal guibg=NONE ctermbg=NONE
-      highlight TerminalNC guibg=NONE ctermbg=NONE
-      highlight StatusLine guibg=NONE ctermbg=NONE
-      highlight StatusLineNC guibg=NONE ctermbg=NONE
+    local transparent_groups = {
+      "Normal",
+      "NormalFloat",
+      "NormalNC",
+      "SignColumn",
+      "StatusLine",
+      "StatusLineNC",
+      "TabLine",
+      "TabLineFill",
+      "Terminal",
+      "TerminalNormal",
+      "TerminalNC",
+    }
 
-      " 设置浮动窗口边框颜色 (使用 tokyonight 颜色)
-      highlight FloatBorder guibg=NONE guifg=#7aa2f7 gui=bold
-      highlight LspInfoBorder guibg=NONE guifg=#7dcfff gui=bold
-      highlight CmpBorder guibg=NONE guifg=#bb9af7 gui=bold
-      highlight MasonBorder guibg=NONE guifg=#9ece6a gui=bold
-      highlight TelescopeBorder guibg=NONE guifg=#ff9e64 gui=bold
+    for _, group in ipairs(transparent_groups) do
+      local ok, existing = pcall(vim.api.nvim_get_hl, 0, { name = group, link = false })
+      local spec = { bg = "NONE" }
+      if ok and existing.fg then
+        spec.fg = existing.fg
+      end
+      vim.api.nvim_set_hl(0, group, spec)
+    end
 
-      " 补全菜单样式
-      highlight CmpPmenu guibg=NONE
-      highlight CmpSel guibg=#283457
-      highlight CmpDoc guibg=NONE
-    ]])
+    if vim.g.colors_name ~= "kanagawa" then
+      return
+    end
+
+    local ok, kanagawa_colors = pcall(require, "kanagawa.colors")
+    if not ok then
+      return
+    end
+
+    local colors = kanagawa_colors.setup()
+    local theme = colors.theme
+    local palette = colors.palette
+    local border = theme.ui.float.fg_border
+
+    local function set(group, opts)
+      opts.bg = opts.bg or "NONE"
+      vim.api.nvim_set_hl(0, group, opts)
+    end
+
+    set("FloatBorder", { fg = border })
+    set("LspInfoBorder", { fg = border })
+    set("MasonBorder", { fg = border })
+    set("WinSeparator", { fg = border })
+    set("VertSplit", { fg = border })
+
+    set("DiagnosticFloatingError", { fg = palette.samuraiRed })
+    set("DiagnosticFloatingWarn", { fg = palette.roninYellow })
+    set("DiagnosticFloatingInfo", { fg = palette.dragonBlue })
+    set("DiagnosticFloatingHint", { fg = palette.waveAqua1 })
+
+    set("BlinkCmpMenu", { fg = theme.ui.fg })
+    set("BlinkCmpMenuBorder", { fg = border })
+    set("BlinkCmpMenuSelection", { fg = theme.ui.fg, bg = theme.ui.bg_p2 })
+    set("BlinkCmpDoc", { fg = theme.ui.fg_dim })
+    set("BlinkCmpDocBorder", { fg = border })
+    set("BlinkCmpSignatureHelp", { fg = theme.ui.fg })
+    set("BlinkCmpSignatureHelpBorder", { fg = border })
   end,
 })

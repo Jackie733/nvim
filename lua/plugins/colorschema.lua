@@ -1,136 +1,136 @@
 return {
-  {
-    "Mofiqul/vscode.nvim",
-    enabled = false,
-    lazy = false,
-    priority = 1000,
-    config = function()
-      local c = require("vscode.colors").get_colors()
-      require("vscode").setup({
-        -- 启用透明背景
-        transparent = true,
+  -- {
+  --   "Mofiqul/vscode.nvim",
+  --   enabled = false,
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     local c = require("vscode.colors").get_colors()
+  --     require("vscode").setup({
+  --       -- 启用透明背景
+  --       transparent = true,
 
-        -- 启用斜体注释和关键字（类似你的原配置）
-        italic_comments = true,
+  --       -- 启用斜体注释和关键字（类似你的原配置）
+  --       italic_comments = true,
 
-        -- 禁用 nvim-tree 背景色（保持透明）
-        disable_nvimtree_bg = true,
+  --       -- 禁用 nvim-tree 背景色（保持透明）
+  --       disable_nvimtree_bg = true,
 
-        -- 颜色覆盖配置
-        color_overrides = {
-          -- 可以在这里覆盖特定颜色，如果需要的话
-        },
+  --       -- 颜色覆盖配置
+  --       color_overrides = {
+  --         -- 可以在这里覆盖特定颜色，如果需要的话
+  --       },
 
-        -- 自定义高亮组配置
-        group_overrides = {
-          -- 状态栏透明
-          StatusLine = { bg = "NONE" },
-          StatusLineNC = { bg = "NONE" },
+  --       -- 自定义高亮组配置
+  --       group_overrides = {
+  --         -- 状态栏透明
+  --         StatusLine = { bg = "NONE" },
+  --         StatusLineNC = { bg = "NONE" },
 
-          -- Lualine 组件透明
-          lualine_a_normal = { bg = "NONE" },
-          lualine_b_normal = { bg = "NONE" },
-          lualine_c_normal = { bg = "NONE" },
-          lualine_x_normal = { bg = "NONE" },
-          lualine_y_normal = { bg = "NONE" },
-          lualine_z_normal = { bg = "NONE" },
+  --         -- Lualine 组件透明
+  --         lualine_a_normal = { bg = "NONE" },
+  --         lualine_b_normal = { bg = "NONE" },
+  --         lualine_c_normal = { bg = "NONE" },
+  --         lualine_x_normal = { bg = "NONE" },
+  --         lualine_y_normal = { bg = "NONE" },
+  --         lualine_z_normal = { bg = "NONE" },
 
-          -- 其他模式的 lualine 组件
-          lualine_a_insert = { bg = "NONE" },
-          lualine_a_visual = { bg = "NONE" },
-          lualine_a_command = { bg = "NONE" },
-          lualine_a_replace = { bg = "NONE" },
+  --         -- 其他模式的 lualine 组件
+  --         lualine_a_insert = { bg = "NONE" },
+  --         lualine_a_visual = { bg = "NONE" },
+  --         lualine_a_command = { bg = "NONE" },
+  --         lualine_a_replace = { bg = "NONE" },
 
-          -- 浮动窗口相关
-          FloatBorder = {
-            bg = "NONE",
-            fg = c.vscBlue, -- 使用 VSCode 主题的蓝色
-            bold = true,
-          },
-          NormalFloat = { bg = "NONE" },
+  --         -- 浮动窗口相关
+  --         FloatBorder = {
+  --           bg = "NONE",
+  --           fg = c.vscBlue, -- 使用 VSCode 主题的蓝色
+  --           bold = true,
+  --         },
+  --         NormalFloat = { bg = "NONE" },
 
-          -- LSP 相关浮动窗口边框
-          LspInfoBorder = {
-            bg = "NONE",
-            fg = c.vscCyan, -- 青色边框
-            bold = true,
-          },
+  --         -- LSP 相关浮动窗口边框
+  --         LspInfoBorder = {
+  --           bg = "NONE",
+  --           fg = c.vscCyan, -- 青色边框
+  --           bold = true,
+  --         },
 
-          -- 诊断浮动窗口
-          DiagnosticFloatingError = { bg = "NONE", fg = c.vscRed },
-          DiagnosticFloatingWarn = { bg = "NONE", fg = c.vscYellow },
-          DiagnosticFloatingInfo = { bg = "NONE", fg = c.vscBlue },
-          DiagnosticFloatingHint = { bg = "NONE", fg = c.vscGreen },
+  --         -- 诊断浮动窗口
+  --         DiagnosticFloatingError = { bg = "NONE", fg = c.vscRed },
+  --         DiagnosticFloatingWarn = { bg = "NONE", fg = c.vscYellow },
+  --         DiagnosticFloatingInfo = { bg = "NONE", fg = c.vscBlue },
+  --         DiagnosticFloatingHint = { bg = "NONE", fg = c.vscGreen },
 
-          -- 补全菜单
-          CmpItemMenu = { bg = "NONE", fg = c.vscGray },
-          CmpItemKind = { bg = "NONE", fg = c.vscPink },
-          CmpBorder = {
-            bg = "NONE",
-            fg = c.vscPink, -- 粉色边框
-            bold = true,
-          },
+  --         -- 补全菜单
+  --         CmpItemMenu = { bg = "NONE", fg = c.vscGray },
+  --         CmpItemKind = { bg = "NONE", fg = c.vscPink },
+  --         CmpBorder = {
+  --           bg = "NONE",
+  --           fg = c.vscPink, -- 粉色边框
+  --           bold = true,
+  --         },
 
-          -- Mason 窗口
-          MasonNormal = { bg = "NONE" },
-          MasonBorder = {
-            bg = "NONE",
-            fg = c.vscGreen, -- 绿色边框
-            bold = true,
-          },
+  --         -- Mason 窗口
+  --         MasonNormal = { bg = "NONE" },
+  --         MasonBorder = {
+  --           bg = "NONE",
+  --           fg = c.vscGreen, -- 绿色边框
+  --           bold = true,
+  --         },
 
-          -- Telescope 边框
-          TelescopeBorder = {
-            bg = "NONE",
-            fg = c.vscOrange, -- 橙色边框
-            bold = true,
-          },
-          TelescopeNormal = { bg = "NONE" },
+  --         -- Telescope 边框
+  --         TelescopeBorder = {
+  --           bg = "NONE",
+  --           fg = c.vscOrange, -- 橙色边框
+  --           bold = true,
+  --         },
+  --         TelescopeNormal = { bg = "NONE" },
 
-          -- 终端相关透明设置
-          Terminal = { bg = "NONE" },
-          TerminalNormal = { bg = "NONE" },
-          TerminalNC = { bg = "NONE" },
+  --         -- 终端相关透明设置
+  --         Terminal = { bg = "NONE" },
+  --         TerminalNormal = { bg = "NONE" },
+  --         TerminalNC = { bg = "NONE" },
 
-          -- Tab 相关
-          TabLine = { bg = "NONE", fg = c.vscGray },
-          TabLineSel = { bg = "NONE", fg = c.vscBlue },
-          TabLineFill = { bg = "NONE" },
+  --         -- Tab 相关
+  --         TabLine = { bg = "NONE", fg = c.vscGray },
+  --         TabLineSel = { bg = "NONE", fg = c.vscBlue },
+  --         TabLineFill = { bg = "NONE" },
 
-          -- 侧边栏透明（NvimTree, Help 等）
-          NvimTreeNormal = { bg = "NONE" },
-          NvimTreeNormalNC = { bg = "NONE" },
-          NvimTreeEndOfBuffer = { bg = "NONE" },
+  --         -- 侧边栏透明（NvimTree, Help 等）
+  --         NvimTreeNormal = { bg = "NONE" },
+  --         NvimTreeNormalNC = { bg = "NONE" },
+  --         NvimTreeEndOfBuffer = { bg = "NONE" },
 
-          -- 帮助窗口透明
-          helpNormal = { bg = "NONE" },
+  --         -- 帮助窗口透明
+  --         helpNormal = { bg = "NONE" },
 
-          -- Quickfix 窗口透明
-          qfNormal = { bg = "NONE" },
+  --         -- Quickfix 窗口透明
+  --         qfNormal = { bg = "NONE" },
 
-          -- 注释和关键字斜体
-          Comment = { italic = true, fg = c.vscGray },
-          Keyword = { italic = true, fg = c.vscPink },
+  --         -- 注释和关键字斜体
+  --         Comment = { italic = true, fg = c.vscGray },
+  --         Keyword = { italic = true, fg = c.vscPink },
 
-          -- 确保主背景透明
-          Normal = { bg = "NONE" },
-          NormalNC = { bg = "NONE" },
-          SignColumn = { bg = "NONE" },
+  --         -- 确保主背景透明
+  --         Normal = { bg = "NONE" },
+  --         NormalNC = { bg = "NONE" },
+  --         SignColumn = { bg = "NONE" },
 
-          -- 行号背景透明
-          LineNr = { bg = "NONE" },
-          CursorLineNr = { bg = "NONE" },
+  --         -- 行号背景透明
+  --         LineNr = { bg = "NONE" },
+  --         CursorLineNr = { bg = "NONE" },
 
-          -- 折叠相关透明
-          Folded = { bg = "NONE" },
-          FoldColumn = { bg = "NONE" },
-        },
-      })
+  --         -- 折叠相关透明
+  --         Folded = { bg = "NONE" },
+  --         FoldColumn = { bg = "NONE" },
+  --       },
+  --     })
 
-      -- 应用配色方案
-      vim.cmd.colorscheme("vscode")
-    end,
-  },
+  --     -- 应用配色方案
+  --     vim.cmd.colorscheme("vscode")
+  --   end,
+  -- },
   --
   -- {
   --   "folke/tokyonight.nvim",
@@ -264,6 +264,7 @@ return {
 
       overrides = function(colors)
         local theme = colors.theme
+        local palette = colors.palette
         return {
           NormalFloat = { bg = "none" },
           FloatBorder = { bg = "none", fg = theme.ui.float.fg_border },
@@ -271,6 +272,7 @@ return {
 
           LspInfoBorder = { bg = "none", fg = theme.ui.float.fg_border },
           MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
+          MasonBorder = { bg = "none", fg = theme.ui.float.fg_border },
 
           TelescopeTitle = { fg = theme.ui.special, bold = true },
           TelescopePromptNormal = { bg = theme.ui.bg_p1 },
@@ -280,13 +282,16 @@ return {
           TelescopePreviewNormal = { bg = theme.ui.bg_dim },
           TelescopePreviewBorder = { fg = theme.ui.bg_dim, bg = theme.ui.bg_dim },
 
-          Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 },
-          PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
-          PmenuSbar = { bg = theme.ui.bg_m1 },
-          PmenuThumb = { bg = theme.ui.bg_p2 },
+          Pmenu = { fg = theme.ui.pmenu.fg, bg = theme.ui.pmenu.bg },
+          PmenuSel = { fg = theme.ui.pmenu.fg_sel ~= "none" and theme.ui.pmenu.fg_sel or theme.ui.fg, bg = theme.ui.pmenu.bg_sel },
+          PmenuSbar = { bg = theme.ui.pmenu.bg_sbar },
+          PmenuThumb = { bg = theme.ui.pmenu.bg_thumb },
 
           StatusLine = { bg = "NONE" },
           StatusLineNC = { bg = "NONE" },
+
+          WinSeparator = { fg = theme.ui.float.fg_border },
+          VertSplit = { fg = theme.ui.float.fg_border },
 
           lualine_a_normal = { bg = "NONE" },
           lualine_b_normal = { bg = "NONE" },
@@ -302,6 +307,24 @@ return {
           TabLine = { bg = "NONE", fg = theme.ui.nontext },
           TabLineSel = { bg = "NONE", fg = theme.syn.fun },
           TabLineFill = { bg = "NONE" },
+
+          BlinkCmpMenu = { bg = "none", fg = theme.ui.fg },
+          BlinkCmpMenuBorder = { bg = "none", fg = theme.ui.float.fg_border },
+          BlinkCmpMenuSelection = { fg = theme.ui.fg, bg = theme.ui.bg_p2 },
+          BlinkCmpDoc = { bg = "none", fg = theme.ui.fg_dim },
+          BlinkCmpDocBorder = { bg = "none", fg = theme.ui.float.fg_border },
+          BlinkCmpSignatureHelp = { bg = "none", fg = theme.ui.fg },
+          BlinkCmpSignatureHelpBorder = { bg = "none", fg = theme.ui.float.fg_border },
+
+          DiagnosticFloatingError = { fg = palette.samuraiRed, bg = "none" },
+          DiagnosticFloatingWarn = { fg = palette.roninYellow, bg = "none" },
+          DiagnosticFloatingInfo = { fg = palette.dragonBlue, bg = "none" },
+          DiagnosticFloatingHint = { fg = palette.waveAqua1, bg = "none" },
+
+          LazyNormal = { fg = theme.ui.fg, bg = theme.ui.bg_m3 },
+          LazyBorder = { bg = "none", fg = theme.ui.float.fg_border },
+          NoiceCmdlinePopupBorder = { bg = "none", fg = theme.ui.float.fg_border },
+          NoiceCmdlinePopup = { bg = "none", fg = theme.ui.fg },
         }
       end,
     },
