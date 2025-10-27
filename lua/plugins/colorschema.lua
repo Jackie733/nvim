@@ -271,7 +271,8 @@ return {
           FloatTitle = { bg = "none" },
 
           LspInfoBorder = { bg = "none", fg = theme.ui.float.fg_border },
-          MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
+          -- 修改这里：让 Mason 透明
+          MasonNormal = { bg = "none", fg = theme.ui.fg },
           MasonBorder = { bg = "none", fg = theme.ui.float.fg_border },
 
           TelescopeTitle = { fg = theme.ui.special, bold = true },
@@ -283,7 +284,10 @@ return {
           TelescopePreviewBorder = { fg = theme.ui.bg_dim, bg = theme.ui.bg_dim },
 
           Pmenu = { fg = theme.ui.pmenu.fg, bg = theme.ui.pmenu.bg },
-          PmenuSel = { fg = theme.ui.pmenu.fg_sel ~= "none" and theme.ui.pmenu.fg_sel or theme.ui.fg, bg = theme.ui.pmenu.bg_sel },
+          PmenuSel = {
+            fg = theme.ui.pmenu.fg_sel ~= "none" and theme.ui.pmenu.fg_sel or theme.ui.fg,
+            bg = theme.ui.pmenu.bg_sel,
+          },
           PmenuSbar = { bg = theme.ui.pmenu.bg_sbar },
           PmenuThumb = { bg = theme.ui.pmenu.bg_thumb },
 
@@ -321,7 +325,8 @@ return {
           DiagnosticFloatingInfo = { fg = palette.dragonBlue, bg = "none" },
           DiagnosticFloatingHint = { fg = palette.waveAqua1, bg = "none" },
 
-          LazyNormal = { fg = theme.ui.fg, bg = theme.ui.bg_m3 },
+          -- 修改这里：让 Lazy 透明
+          LazyNormal = { fg = theme.ui.fg, bg = "none" },
           LazyBorder = { bg = "none", fg = theme.ui.float.fg_border },
           NoiceCmdlinePopupBorder = { bg = "none", fg = theme.ui.float.fg_border },
           NoiceCmdlinePopup = { bg = "none", fg = theme.ui.fg },
