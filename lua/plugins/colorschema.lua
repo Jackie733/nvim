@@ -228,114 +228,123 @@ return {
   --   },
   -- },
   {
-    "rebelot/kanagawa.nvim",
+    "blazkowolf/gruber-darker.nvim",
     lazy = false,
     priority = 1000,
-    opts = {
-      compile = false,
-      undercurl = true,
-      commentStyle = { italic = true },
-      functionStyle = {},
-      keywordStyle = { italic = true },
-      statementStyle = { bold = true },
-
-      transparent = true,
-      terminalColors = true,
-      dimInactive = false,
-
-      theme = "dragon",
-      background = {
-        dark = "dragon",
-        light = "lotus",
-      },
-
-      colors = {
-        theme = {
-          all = {
-            ui = { bg_gutter = "none" },
-          },
-          dragon = {
-            ui = {
-              float = { bg = "none" },
-            },
-          },
-        },
-      },
-
-      overrides = function(colors)
-        local theme = colors.theme
-        local palette = colors.palette
-        return {
-          NormalFloat = { bg = "none" },
-          FloatBorder = { bg = "none", fg = theme.ui.float.fg_border },
-          FloatTitle = { bg = "none" },
-
-          LspInfoBorder = { bg = "none", fg = theme.ui.float.fg_border },
-          -- 修改这里：让 Mason 透明
-          MasonNormal = { bg = "none", fg = theme.ui.fg },
-          MasonBorder = { bg = "none", fg = theme.ui.float.fg_border },
-
-          TelescopeTitle = { fg = theme.ui.special, bold = true },
-          TelescopePromptNormal = { bg = theme.ui.bg_p1 },
-          TelescopePromptBorder = { fg = theme.ui.bg_p1, bg = theme.ui.bg_p1 },
-          TelescopeResultsNormal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
-          TelescopeResultsBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
-          TelescopePreviewNormal = { bg = theme.ui.bg_dim },
-          TelescopePreviewBorder = { fg = theme.ui.bg_dim, bg = theme.ui.bg_dim },
-
-          Pmenu = { fg = theme.ui.pmenu.fg, bg = theme.ui.pmenu.bg },
-          PmenuSel = {
-            fg = theme.ui.pmenu.fg_sel ~= "none" and theme.ui.pmenu.fg_sel or theme.ui.fg,
-            bg = theme.ui.pmenu.bg_sel,
-          },
-          PmenuSbar = { bg = theme.ui.pmenu.bg_sbar },
-          PmenuThumb = { bg = theme.ui.pmenu.bg_thumb },
-
-          StatusLine = { bg = "NONE" },
-          StatusLineNC = { bg = "NONE" },
-
-          WinSeparator = { fg = theme.ui.float.fg_border },
-          VertSplit = { fg = theme.ui.float.fg_border },
-
-          lualine_a_normal = { bg = "NONE" },
-          lualine_b_normal = { bg = "NONE" },
-          lualine_c_normal = { bg = "NONE" },
-          lualine_x_normal = { bg = "NONE" },
-          lualine_y_normal = { bg = "NONE" },
-          lualine_z_normal = { bg = "NONE" },
-          lualine_a_insert = { bg = "NONE" },
-          lualine_a_visual = { bg = "NONE" },
-          lualine_a_command = { bg = "NONE" },
-          lualine_a_replace = { bg = "NONE" },
-
-          TabLine = { bg = "NONE", fg = theme.ui.nontext },
-          TabLineSel = { bg = "NONE", fg = theme.syn.fun },
-          TabLineFill = { bg = "NONE" },
-
-          BlinkCmpMenu = { bg = "none", fg = theme.ui.fg },
-          BlinkCmpMenuBorder = { bg = "none", fg = theme.ui.float.fg_border },
-          BlinkCmpMenuSelection = { fg = theme.ui.fg, bg = theme.ui.bg_p2 },
-          BlinkCmpDoc = { bg = "none", fg = theme.ui.fg_dim },
-          BlinkCmpDocBorder = { bg = "none", fg = theme.ui.float.fg_border },
-          BlinkCmpSignatureHelp = { bg = "none", fg = theme.ui.fg },
-          BlinkCmpSignatureHelpBorder = { bg = "none", fg = theme.ui.float.fg_border },
-
-          DiagnosticFloatingError = { fg = palette.samuraiRed, bg = "none" },
-          DiagnosticFloatingWarn = { fg = palette.roninYellow, bg = "none" },
-          DiagnosticFloatingInfo = { fg = palette.dragonBlue, bg = "none" },
-          DiagnosticFloatingHint = { fg = palette.waveAqua1, bg = "none" },
-
-          -- 修改这里：让 Lazy 透明
-          LazyNormal = { fg = theme.ui.fg, bg = "none" },
-          LazyBorder = { bg = "none", fg = theme.ui.float.fg_border },
-          NoiceCmdlinePopupBorder = { bg = "none", fg = theme.ui.float.fg_border },
-          NoiceCmdlinePopup = { bg = "none", fg = theme.ui.fg },
-        }
-      end,
-    },
     config = function(_, opts)
-      require("kanagawa").setup(opts)
-      vim.cmd.colorscheme("kanagawa")
+      require("gruber-darker").setup(opts)
+      vim.cmd.colorscheme("gruber-darker")
     end,
   },
+  -- {
+  --   "rebelot/kanagawa.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   opts = {
+  --     compile = false,
+  --     undercurl = true,
+  --     commentStyle = { italic = true },
+  --     functionStyle = {},
+  --     keywordStyle = { italic = true },
+  --     statementStyle = { bold = true },
+  --
+  --     transparent = true,
+  --     terminalColors = true,
+  --     dimInactive = false,
+  --
+  --     theme = "wave",
+  --     background = {
+  --       dark = "wave",
+  --       light = "lotus",
+  --     },
+  --
+  --     colors = {
+  --       theme = {
+  --         all = {
+  --           ui = { bg_gutter = "none" },
+  --         },
+  --         dragon = {
+  --           ui = {
+  --             float = { bg = "none" },
+  --           },
+  --         },
+  --       },
+  --     },
+  --
+  --     overrides = function(colors)
+  --       local theme = colors.theme
+  --       local palette = colors.palette
+  --       return {
+  --         NormalFloat = { bg = "none" },
+  --         FloatBorder = { bg = "none", fg = theme.ui.float.fg_border },
+  --         FloatTitle = { bg = "none" },
+  --
+  --         LspInfoBorder = { bg = "none", fg = theme.ui.float.fg_border },
+  --         -- 修改这里：让 Mason 透明
+  --         MasonNormal = { bg = "none", fg = theme.ui.fg },
+  --         MasonBorder = { bg = "none", fg = theme.ui.float.fg_border },
+  --
+  --         TelescopeTitle = { fg = theme.ui.special, bold = true },
+  --         TelescopePromptNormal = { bg = theme.ui.bg_p1 },
+  --         TelescopePromptBorder = { fg = theme.ui.bg_p1, bg = theme.ui.bg_p1 },
+  --         TelescopeResultsNormal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
+  --         TelescopeResultsBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
+  --         TelescopePreviewNormal = { bg = theme.ui.bg_dim },
+  --         TelescopePreviewBorder = { fg = theme.ui.bg_dim, bg = theme.ui.bg_dim },
+  --
+  --         Pmenu = { fg = theme.ui.pmenu.fg, bg = theme.ui.pmenu.bg },
+  --         PmenuSel = {
+  --           fg = theme.ui.pmenu.fg_sel ~= "none" and theme.ui.pmenu.fg_sel or theme.ui.fg,
+  --           bg = theme.ui.pmenu.bg_sel,
+  --         },
+  --         PmenuSbar = { bg = theme.ui.pmenu.bg_sbar },
+  --         PmenuThumb = { bg = theme.ui.pmenu.bg_thumb },
+  --
+  --         StatusLine = { bg = "NONE" },
+  --         StatusLineNC = { bg = "NONE" },
+  --
+  --         WinSeparator = { fg = theme.ui.float.fg_border },
+  --         VertSplit = { fg = theme.ui.float.fg_border },
+  --
+  --         lualine_a_normal = { bg = "NONE" },
+  --         lualine_b_normal = { bg = "NONE" },
+  --         lualine_c_normal = { bg = "NONE" },
+  --         lualine_x_normal = { bg = "NONE" },
+  --         lualine_y_normal = { bg = "NONE" },
+  --         lualine_z_normal = { bg = "NONE" },
+  --         lualine_a_insert = { bg = "NONE" },
+  --         lualine_a_visual = { bg = "NONE" },
+  --         lualine_a_command = { bg = "NONE" },
+  --         lualine_a_replace = { bg = "NONE" },
+  --
+  --         TabLine = { bg = "NONE", fg = theme.ui.nontext },
+  --         TabLineSel = { bg = "NONE", fg = theme.syn.fun },
+  --         TabLineFill = { bg = "NONE" },
+  --
+  --         BlinkCmpMenu = { bg = "none", fg = theme.ui.fg },
+  --         BlinkCmpMenuBorder = { bg = "none", fg = theme.ui.float.fg_border },
+  --         BlinkCmpMenuSelection = { fg = theme.ui.fg, bg = theme.ui.bg_p2 },
+  --         BlinkCmpDoc = { bg = "none", fg = theme.ui.fg_dim },
+  --         BlinkCmpDocBorder = { bg = "none", fg = theme.ui.float.fg_border },
+  --         BlinkCmpSignatureHelp = { bg = "none", fg = theme.ui.fg },
+  --         BlinkCmpSignatureHelpBorder = { bg = "none", fg = theme.ui.float.fg_border },
+  --
+  --         DiagnosticFloatingError = { fg = palette.samuraiRed, bg = "none" },
+  --         DiagnosticFloatingWarn = { fg = palette.roninYellow, bg = "none" },
+  --         DiagnosticFloatingInfo = { fg = palette.dragonBlue, bg = "none" },
+  --         DiagnosticFloatingHint = { fg = palette.waveAqua1, bg = "none" },
+  --
+  --         -- 修改这里：让 Lazy 透明
+  --         LazyNormal = { fg = theme.ui.fg, bg = "none" },
+  --         LazyBorder = { bg = "none", fg = theme.ui.float.fg_border },
+  --         NoiceCmdlinePopupBorder = { bg = "none", fg = theme.ui.float.fg_border },
+  --         NoiceCmdlinePopup = { bg = "none", fg = theme.ui.fg },
+  --       }
+  --     end,
+  --   },
+  --   config = function(_, opts)
+  --     require("kanagawa").setup(opts)
+  --     vim.cmd.colorscheme("kanagawa")
+  --   end,
+  -- },
 }
