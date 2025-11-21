@@ -79,6 +79,11 @@ return {
           -- Noice 透明
           NoiceCmdlinePopupBorder = { bg = "none", fg = theme.ui.float.fg_border },
           NoiceCmdlinePopup = { bg = "none", fg = theme.ui.fg },
+
+          -- 内置 TabLine 透明
+          TabLineFill = { bg = "none", fg = theme.ui.fg_dim },
+          TabLine = { bg = "none", fg = theme.ui.fg_dim },
+          TabLineSel = { bg = "none", fg = theme.syn.special1, bold = true },
         }
       end,
     },
