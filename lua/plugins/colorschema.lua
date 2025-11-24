@@ -1,95 +1,28 @@
 return {
   {
-    "rebelot/kanagawa.nvim",
+    "blazkowolf/gruber-darker.nvim",
     lazy = false,
     priority = 1000,
     opts = {
-      compile = false,
-      undercurl = true,
-      commentStyle = { italic = true },
-      functionStyle = {},
-      keywordStyle = { italic = true },
-      statementStyle = { bold = true },
-  
       transparent = true,
-      terminalColors = true,
-      dimInactive = false,
-  
-      theme = "dragon",
-      background = {
-        dark = "dragon",
-        light = "lotus",
-      },
-  
-      colors = {
-        theme = {
-          all = {
-            ui = { bg_gutter = "none" },
-          },
-          dragon = {
-            ui = {
-              float = { bg = "none" },
-            },
-          },
-        },
-      },
-  
-      overrides = function(colors)
-        local theme = colors.theme
-        return {
-          -- 基础浮动窗口
-          NormalFloat = { bg = "none" },
-          FloatBorder = { bg = "none", fg = theme.ui.float.fg_border },
-          FloatTitle = { bg = "none" },
-  
-          -- LSP
-          LspInfoBorder = { bg = "none", fg = theme.ui.float.fg_border },
-  
-          -- Mason 透明
-          MasonNormal = { bg = "none", fg = theme.ui.fg },
-          MasonBorder = { bg = "none", fg = theme.ui.float.fg_border },
-  
-          -- 状态栏透明
-          StatusLine = { bg = "NONE" },
-          StatusLineNC = { bg = "NONE" },
-  
-          -- 窗口分隔符
-          WinSeparator = { fg = theme.ui.float.fg_border },
-          VertSplit = { fg = theme.ui.float.fg_border },
-  
-          -- BlinkCmp 补全菜单透明
-          BlinkCmpMenu = { bg = "none", fg = theme.ui.fg },
-          BlinkCmpMenuBorder = { bg = "none", fg = theme.ui.float.fg_border },
-          BlinkCmpMenuSelection = { fg = theme.ui.fg, bg = theme.ui.bg_p2 },
-          BlinkCmpDoc = { bg = "none", fg = theme.ui.fg_dim },
-          BlinkCmpDocBorder = { bg = "none", fg = theme.ui.float.fg_border },
-          BlinkCmpSignatureHelp = { bg = "none", fg = theme.ui.fg },
-          BlinkCmpSignatureHelpBorder = { bg = "none", fg = theme.ui.float.fg_border },
-  
-          -- 诊断浮动窗口
-          DiagnosticFloatingError = { fg = theme.diag.error, bg = "none" },
-          DiagnosticFloatingWarn = { fg = theme.diag.warning, bg = "none" },
-          DiagnosticFloatingInfo = { fg = theme.diag.info, bg = "none" },
-          DiagnosticFloatingHint = { fg = theme.diag.hint, bg = "none" },
-  
-          -- Lazy 插件管理器透明
-          LazyNormal = { fg = theme.ui.fg, bg = "none" },
-          LazyBorder = { bg = "none", fg = theme.ui.float.fg_border },
-  
-          -- Noice 透明
-          NoiceCmdlinePopupBorder = { bg = "none", fg = theme.ui.float.fg_border },
-          NoiceCmdlinePopup = { bg = "none", fg = theme.ui.fg },
-
-          -- 内置 TabLine 透明
-          TabLineFill = { bg = "none", fg = theme.ui.fg_dim },
-          TabLine = { bg = "none", fg = theme.ui.fg_dim },
-          TabLineSel = { bg = "none", fg = theme.syn.special1, bold = true },
-        }
-      end,
     },
     config = function(_, opts)
-      require("kanagawa").setup(opts)
-      vim.cmd.colorscheme("kanagawa")
+      require("gruber-darker").setup(opts)
+      vim.cmd.colorscheme("gruber-darker")
+
+      -- 自定义高亮配色方案
+      -- 字段颜色
+      vim.api.nvim_set_hl(0, "@field", { fg = "#a8a8a8", bold = true })
+      vim.api.nvim_set_hl(0, "@property", { link = "@field" })
+
+      vim.api.nvim_set_hl(0, "SnacksPickerDir", { fg = "#a8a8a8" })
+
+      -- 这对应终端中的白色和亮白色，它们是用户输入和主要输出的颜色。
+      vim.g.terminal_color_7 = "#e4e4e4"
+      vim.g.terminal_color_15 = "#e4e4e4"
+      -- 终端Stack Trace/辅助配色调整
+      vim.g.terminal_color_8 = "#707070"
+      vim.g.terminal_color_0 = "#454545"
     end,
   },
 }
