@@ -4,6 +4,11 @@ return {
     lazy = false,
     priority = 1000,
     opts = {
+      italic = {
+        strings = false,
+        comments = false,
+        folds = false,
+      },
       transparent = true,
     },
     config = function(_, opts)
