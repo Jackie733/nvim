@@ -22,3 +22,7 @@ vim.opt.sidescrolloff = 8
 -- 分割窗口设置
 vim.opt.splitbelow = true
 vim.opt.splitright = true
+
+-- 避免浮动窗口/补全菜单的透明混合导致“黑底”
+vim.opt.winblend = 0
+vim.opt.pumblend = 0
